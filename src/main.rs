@@ -21,6 +21,9 @@ fn main() {
         
         // Wait for user input
         let input = read_line().unwrap();
-        println!("{}: command not found", input);
+        match input.as_str() {
+            "exit" => break,
+            _ => println!("{}: command not found", input),
+        }
     }
 }
