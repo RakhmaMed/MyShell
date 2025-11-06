@@ -31,6 +31,11 @@ fn handle_exit(args: &[&str]) -> ! {
     std::process::exit(code);
 }
 
+fn handle_echo(args: &[&str]) {
+    let output = args.join(" ");
+    print!("{}\n", output);
+}
+
 fn main() -> io::Result<()> {
     loop {
         print!("$ ");
@@ -43,6 +48,7 @@ fn main() -> io::Result<()> {
         let args: Vec<&str> = parts.collect();
         match command {
             "exit" => handle_exit(&args),
+            "echo" => handle_echo(&args),
             _ => println!("{}: command not found", command),
         }
     }
